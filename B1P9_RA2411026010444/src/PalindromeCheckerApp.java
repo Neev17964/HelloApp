@@ -17,3 +17,5 @@ class UC2_PalindromeCheckerApp {
         scanner.close();
     }
 }
+
+
