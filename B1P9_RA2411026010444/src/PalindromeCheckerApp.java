@@ -1,29 +1,26 @@
 import java.util.Scanner;
-import java.util.Stack;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
-class UC6_PalindromeCheckerApp {
+class UC7_PalindromeCheckerApp {
 
     public static void main(String[] args) {
-        System.out.println("--- UC6: Queue + Stack Based Palindrome Check ---");
+        System.out.println("--- UC7: Deque-Based Optimized Palindrome Checker ---");
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input Text: ");
         String word = scanner.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
         for (int i = 0; i < word.length(); i++) {
-            queue.offer(word.charAt(i));
-            stack.push(word.charAt(i));
+            deque.offerLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        while (!queue.isEmpty() && !stack.isEmpty()) {
-            if (queue.poll() != stack.pop()) {
+        while (deque.size() > 1) {
+            if (deque.pollFirst() != deque.pollLast()) {
                 isPalindrome = false;
                 break;
             }
